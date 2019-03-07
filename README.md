@@ -44,4 +44,4 @@
 
 ### Association
 - has_many :member
-- has_many :messages
+- has_many :message
