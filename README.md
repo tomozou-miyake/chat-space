@@ -33,8 +33,8 @@
 |password|string|add_index,null: false|
 
 ### Association
-- has_many :member
-- has_many :message
+- has_many :members
+- has_many :messages
 
 ## groupsテーブル
 
@@ -43,5 +43,5 @@
 |name|string|null :false|
 
 ### Association
-- has_many :member
-- has_many :message
+- has_many :members
+- has_many :messages
