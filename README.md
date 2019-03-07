@@ -6,7 +6,6 @@
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-|
 
 ### Association
 - belongs_to :group
@@ -31,7 +30,6 @@
 |name|string|null: false|
 |email|string|add_index,null: false|
 |password|string|add_index,null: false|
-|
 
 ### Association
 - has_many :member
@@ -43,7 +41,6 @@
 |------|----|-------|
 |id|integer|null: false, foreign_key: true|
 |name|string|null :false|
-|
 
 ### Association
 - has_many :member
