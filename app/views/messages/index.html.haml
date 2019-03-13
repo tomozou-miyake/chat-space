@@ -1,7 +1,6 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .chat-side
       .side-header
@@ -43,8 +42,8 @@
               楽しかった
       .form
         .input-box
-          %input.input-box-text{:placeholder => "type a message", :type => "text"}/
+          %input.input-box-text{placeholder: "type a message", type: "text"}
           %label.input-box-image
             %i.fa.fa-image
-            %input.input-box-image-file{:name => "message[image]"}/
-        %input.submit-btn{:name => "commit", :type => "submit", :value => "Send"}/
+            %input.input-box-image-file{name: "message[image]"}
+        %input.submit-btn{name: "commit",type: "submit", value: "Send"}
