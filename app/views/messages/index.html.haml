@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    .chat-side
+      .side-header
+        .side-header-box
+          %p.side-header-box-user tanaka
+          %ul.side-header-box-menu
+            %li.side-header-box-menu-edit-user
+              %i.fa.fa-edit
+            %li.side-header-box-menu-new-group
+              %i.fa.fa-cog
+      .groups
+        .group
+          %p.group-name
+            焼肉グループ
+          %p.group-latest-message
+            yaki
+        .group
+          %p.group-name
+            鍋グループ
+          %p.group-latest-message
+            うどん
+    .chat-main
+      .main-header
+        .main-header-left-box
+          %h2.main-header-left-box-current-group
+            tanaka
+          %ul.main-header-left-box-member-list
+            Member : yamaguti
+        .main-header-edit-btn Edit
+      .messages
+        .message
+          .message-top
+            .message-upper-info
+              %span.message-upper-info-talker
+                tanaka
+              %span.message-upper-info-date
+                2019/03/07(Thu)16:47:29
+            %p.message-text
+              楽しかった
+      .form
+        .input-box
+          %input.input-box-text{:placeholder => "type a message", :type => "text"}/
+          %label.input-box-image
+            %i.fa.fa-image
+            %input.input-box-image-file{:name => "message[image]"}/
+        %input.submit-btn{:name => "commit", :type => "submit", :value => "Send"}/
