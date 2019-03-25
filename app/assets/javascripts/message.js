@@ -1,8 +1,8 @@
 $(function(){
      function buildHTML(message){
+      var include_image = "";
       if ( message.image ) {
-        include_image = `<img src="${message.image_url}">`;
-      }
+         include_image = `<img src="${message.image_url}">`;}
         var html =
          `<div class="message" data-message-id=${message.id}>
             <div class="upper-message">
