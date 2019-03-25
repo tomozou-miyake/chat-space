@@ -18,7 +18,7 @@ $(function(){
                 ${message.content}
               </p>
             </div>
-            <${include.image} >
+            <${include_image} >
           </div>`
         return html;
     }
