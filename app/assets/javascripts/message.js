@@ -1,8 +1,7 @@
 $(function(){
      function buildHTML(message){
-      var include_image = "";
-      if ( message.image ) {
-         include_image = `<img src="${message.image_url}">`;}
+      include_image =(message.image_url) ? `<img src="${message.image_url}">` : "";
+
         var html =
          `<div class="message" data-message-id=${message.id}>
             <div class="upper-message">
@@ -10,7 +9,7 @@ $(function(){
                 ${message.user_name}
               </div>
               <div class="upper-message__date">
-                ${message.date}
+                ${message.create_date}
               </div>
             </div>
             <div class="lower-message">
@@ -18,16 +17,16 @@ $(function(){
                 ${message.content}
               </p>
             </div>
-            <${include_image} >
+            ${include_image}
           </div>`
 
         return html;
     }
 
-$('.js-form').on('submit', function(){
+  $('.new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -47,4 +46,32 @@ $('.js-form').on('submit', function(){
       });
       return false;
     });
+
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }else{
+        clearInterval(update)
+        return false;
+      }
+    function update(){
+      var message_id = $('.message:last').data('message-id') || 0 ;
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { last_id: message_id },
+        dataType: 'json'
+      })
+      .done(function(newMessages){
+        var insertHTML = '';
+        newMessages.forEach(function(message){
+        insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML)
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        $('form')[0].reset();
+         })
+      })
+      .fail(function(data) {
+        alert('更新できませんでした。');
+      });
+  };
 });
