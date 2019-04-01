@@ -1,9 +1,9 @@
 $(function(){
      function buildHTML(message){
-      var include_image = "";
-      if ( message.image_url ) {
-         include_image = `<img src="${message.image_url}">`;
-       }
+      include_image =(message.image_url) ? `<img src="${message.image_url}">` : "";
+      // if ( message.image_url ) {
+      //    include_image = `<img src="${message.image_url}">`;
+      //  }
         var html =
          `<div class="message" data-message-id=${message.id}>
             <div class="upper-message">
@@ -52,15 +52,14 @@ $(function(){
 
 //以下、5秒ごとに自動更新する機能に関する記述
 
-    $(function() {
       if (location.pathname.match(/\/groups\/\d+\/messages/)) {
         setInterval(update, 5000);
+      }else{
+        clearInterval(update)
+        return false;
       }
-      return false;
-    });
     function update(){
       var message_id = $('.message:last').data('message-id') || 0 ;
-      console.log(message_id)
       $.ajax({
         url: location.href,
         type: 'GET',
@@ -68,7 +67,6 @@ $(function(){
         dataType: 'json'
       })
       .done(function(newMessages){
-        console.log(newMessages)
         var insertHTML = '';
         newMessages.forEach(function(message){
         insertHTML = buildHTML(message);
@@ -78,7 +76,7 @@ $(function(){
          })
       })
       .fail(function(data) {
-        console.log('更新できませんでした。');
+        alert('更新できませんでした。');
       });
   };
 });
