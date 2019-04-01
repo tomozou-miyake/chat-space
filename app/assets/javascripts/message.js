@@ -1,9 +1,7 @@
 $(function(){
      function buildHTML(message){
       include_image =(message.image_url) ? `<img src="${message.image_url}">` : "";
-      // if ( message.image_url ) {
-      //    include_image = `<img src="${message.image_url}">`;
-      //  }
+
         var html =
          `<div class="message" data-message-id=${message.id}>
             <div class="upper-message">
@@ -48,9 +46,6 @@ $(function(){
       });
       return false;
     });
-  /*ここまで作ったやつ*/
-
-//以下、5秒ごとに自動更新する機能に関する記述
 
       if (location.pathname.match(/\/groups\/\d+\/messages/)) {
         setInterval(update, 5000);
