@@ -22,14 +22,6 @@ set :keep_releases, 5
 #     invoke 'unicorn:restart'
 #   end
 # end
-
-set :default_env, {
-  rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
-  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
-}
-
 # secrets.yml用のシンボリックリンクを追加
 set :linked_files, %w{ config/secrets.yml }
 
@@ -53,3 +45,10 @@ namespace :deploy do
   before :starting, 'deploy:upload'
   # after :finishing, 'deploy:cleanup'
 end
+
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
